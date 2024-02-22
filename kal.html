@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add CSS styles for the typing animation */
+        #typing-effect {
+            overflow: hidden;
+            border-right: 0.15em solid #333;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 0s steps(20) infinite alternate;
+        }
+
+        /* Add CSS keyframes for the typing animation */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 20%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="typing-effect"></div>
+
+    <script>
+        // JavaScript code for the auto-typing effect
+        var texts = [
+            "Hello, World!",
+            "Welcome to my website!",
+            "This is the auto-typing effect.",
+            "Feel free to customize it!"
+        ];
+        var speed = 100; // Adjust the typing speed (in milliseconds)
+
+        var element = document.getElementById("typing-effect");
+        var textIndex = 0;
+        var charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < texts[textIndex].length) {
+                element.innerHTML += texts[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, speed);
+            } else {
+                setTimeout(eraseText, 1000);
+            }
+        }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                element.innerHTML = texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, speed / 2);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        typeWriter();
+    </script>
+    <a href=""></a>
+    <video src="assets/img/demo.mp4" controls>clixk heh</video>
+</body>
+</html>
